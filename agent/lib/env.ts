@@ -1,4 +1,4 @@
-export interface Env {
+export default interface Env {
   logLevel: number
   minecraftServerHost: string
   minecraftServerPort: number

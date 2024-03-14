@@ -1,7 +1,7 @@
 import 'dotenv/config'
-import { Bot } from './lib/bot.js'
+import Bot from './lib/Bot.js'
 import consola from 'consola'
-import { loadEnv } from './lib/env.js'
+import { loadEnv } from './lib/Env.js'
 import sleep from 'p-sleep'
 
 async function main (): Promise<void> {

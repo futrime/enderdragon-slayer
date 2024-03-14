@@ -2,10 +2,10 @@ import consola from 'consola'
 import minecraftData from 'minecraft-data'
 import mineflayer from 'mineflayer'
 import mineflayerCollectBlock from 'mineflayer-collectblock'
+import mineflayerPVP from 'mineflayer-pvp'
 import mineflayerPathFinder from 'mineflayer-pathfinder'
-import mineflayerPvp from 'mineflayer-pvp'
 
-export class Bot {
+export default class Bot {
   readonly minecraftData: minecraftData.IndexedData
   readonly mineflayerBot: mineflayer.Bot
 
@@ -39,7 +39,7 @@ function createMineflayerBot (
 
   mineflayerBot.loadPlugin(mineflayerCollectBlock.plugin)
   mineflayerBot.loadPlugin(mineflayerPathFinder.pathfinder)
-  mineflayerBot.loadPlugin(mineflayerPvp.plugin)
+  mineflayerBot.loadPlugin(mineflayerPVP.plugin)
 
   mineflayerBot.on('error', err => {
     consola.error(err)
