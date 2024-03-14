@@ -133,3 +133,4 @@ dist
 
 ## Project Specific
 .vscode/
+dist/
