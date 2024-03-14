@@ -5,6 +5,7 @@ export default interface Env {
   minecraftUsername: string
   minecraftVersion: string
   openAIApiKey: string
+  openAIBaseURL: string
 }
 
 export function loadEnv (): Env {
@@ -14,6 +15,7 @@ export function loadEnv (): Env {
     minecraftServerPort: parseInt(process.env.MINECRAFT_SERVER_PORT ?? '25565'),
     minecraftUsername: process.env.MINECRAFT_USERNAME ?? 'agent',
     minecraftVersion: process.env.MINECRAFT_VERSION ?? '1.20.1',
-    openAIApiKey: process.env.OPENAI_API_KEY ?? ''
+    openAIApiKey: process.env.OPENAI_API_KEY ?? '',
+    openAIBaseURL: process.env.OPENAI_BASE_URL ?? 'https://api.openai.com/v1'
   }
 }

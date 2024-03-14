@@ -10,31 +10,33 @@ export default class Bot {
   readonly mineflayerBot: mineflayer.Bot
 
   constructor (
-    readonly minecraftServerHost: string,
-    readonly minecraftServerPort: number,
-    readonly minecraftVersion: string,
-    readonly minecraftUsername: string
+    host: string,
+    port: number,
+    version: string,
+    username: string
   ) {
-    this.mineflayerBot = createMineflayerBot(minecraftServerHost,
-      minecraftServerPort,
-      minecraftVersion,
-      minecraftUsername)
-    this.minecraftData = minecraftData(minecraftVersion)
+    this.mineflayerBot = createMineflayerBot(
+      host,
+      port,
+      version,
+      username
+    )
+    this.minecraftData = minecraftData(version)
   }
 }
 
 function createMineflayerBot (
-  minecraftServerHost: string,
-  minecraftServerPort: number,
-  minecraftVersion: string,
-  minecraftUsername: string
+  host: string,
+  port: number,
+  version: string,
+  username: string
 ): mineflayer.Bot {
   const mineflayerBot = mineflayer.createBot({
     auth: 'offline',
-    host: minecraftServerHost,
-    port: minecraftServerPort,
-    username: minecraftUsername,
-    version: minecraftVersion
+    host,
+    port,
+    username,
+    version
   })
 
   mineflayerBot.loadPlugin(mineflayerCollectBlock.plugin)
@@ -45,7 +47,7 @@ function createMineflayerBot (
     consola.error(err)
   })
   mineflayerBot.on('login', () => {
-    consola.log(`bot logged in as ${minecraftUsername}`)
+    consola.log(`bot logged in as ${username}`)
   })
 
   return mineflayerBot

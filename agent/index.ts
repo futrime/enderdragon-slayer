@@ -1,8 +1,8 @@
 import 'dotenv/config'
 import Bot from './lib/Bot.js'
+import GPT from './lib/GPT.js'
 import consola from 'consola'
 import { loadEnv } from './lib/Env.js'
-import sleep from 'p-sleep'
 
 async function main (): Promise<void> {
   const env = loadEnv()
@@ -14,8 +14,13 @@ async function main (): Promise<void> {
     env.minecraftVersion,
     env.minecraftUsername)
 
-  await sleep(5000)
-  bot.mineflayerBot.chat('Hello')
+  const llm = new GPT({
+    openAIAPIKey: env.openAIApiKey,
+    openAIBaseURL: env.openAIBaseURL
+  })
+  const answer = await llm.ask('Act as a native English speaker. How are you?')
+
+  consola.info(answer)
 }
 
 main().catch((error) => {
